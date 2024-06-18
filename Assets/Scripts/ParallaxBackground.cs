@@ -15,6 +15,11 @@ public class ParallaxBackground : MonoBehaviour
 
     private void Update()
     {
-        material.mainTextureOffset += new Vector2(moveSpeed.x, moveSpeed.y * Time.deltaTime);
+        material.mainTextureOffset += moveSpeed * Time.deltaTime;
+    }
+
+    public void SetParallaxBackground(float moveX)
+    {
+        moveSpeed.x = moveX;
     }
 }
