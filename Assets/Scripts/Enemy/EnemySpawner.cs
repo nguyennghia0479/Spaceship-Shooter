@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnEnemy());
+        StartCoroutine(SpawnEnemyRoutine());
     }
 
     public WaveInfo GetCurrentWaveInfo()
@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
         return currentWave;
     }
 
-    private IEnumerator SpawnEnemy()
+    private IEnumerator SpawnEnemyRoutine()
     {
         do
         {
@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
 
                 for (int i = 0; i < currentWave.GetEnemyCount(); i++)
                 {
-                    Instantiate(currentWave.GetEnemyByIndex(i), currentWave.GetStartingWaypoint().position, Quaternion.identity);
+                    Instantiate(currentWave.GetEnemyByIndex(i), currentWave.GetStartingWaypoint().position, Quaternion.Euler(0, 0, -180), transform);
 
                     yield return new WaitForSeconds(currentWave.GetRandomTimeSpawnEnemy());
                 }
