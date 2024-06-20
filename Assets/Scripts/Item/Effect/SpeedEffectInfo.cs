@@ -11,8 +11,9 @@ public class SpeedEffectInfo : ItemEffectInfo
 
     public override void ExecuteItemEffect()
     {
-        PlayerShip playerShip = PlayerManager.Instance.playerShip;
+        base.ExecuteItemEffect();
 
+        PlayerShip playerShip = PlayerManager.Instance.playerShip;
         playerShip.IncreaseSpeed(speedPercentage, duration);
     }
 }

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a02ad2fd8d78144fb4769578becb76d, type: 3}
+  m_Name: GreenPillEffect
+  m_EditorClassIdentifier: 
+  itemEffectDes: Restore 50 health point for player ship
+  particleEffectPrefab: {fileID: 6795084574191159438, guid: c4c45fa070c45a140bf6891bd56ec142, type: 3}
+  healthPoint: 50

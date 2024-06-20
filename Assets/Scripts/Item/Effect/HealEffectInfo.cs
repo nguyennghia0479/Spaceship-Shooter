@@ -9,8 +9,9 @@ public class HealEffectInfo : ItemEffectInfo
 
     public override void ExecuteItemEffect()
     {
-        Health health = PlayerManager.Instance.playerShip.GetComponent<Health>();
+        base.ExecuteItemEffect();
 
+        Health health = PlayerManager.Instance.playerShip.GetComponent<Health>();
         health.IncreaseHealth(healthPoint);
     }
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db29c52af90d9c4299527674008cbb7, type: 3}
+  m_Name: GoldProjectileEffect
+  m_EditorClassIdentifier: 
+  itemEffectDes: Using large projectile tier 3 in 7 seconds
+  particleEffectPrefab: {fileID: 6795084574191159438, guid: b583f148426845640b85c3c0aa5debae, type: 3}
+  projectileUpgradePrefab: {fileID: 3458019600514571437, guid: 063933940aadddd4f9df152d7f883c81, type: 3}
+  duration: 7
