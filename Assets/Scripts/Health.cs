@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
+    [SerializeField] protected int maxHealth;
 
-    private int currentHealth;
+    protected int currentHealth;
+    private float armorPercentage;
 
-    private void Start()
+    protected virtual void Start()
     {
         currentHealth = maxHealth;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out DamageDealer damageDealer))
         {
@@ -22,13 +23,62 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void TakeDamage(int damage)
+    protected virtual void TakeDamage(int damage)
     {
+        damage = CheckTargetArmor(damage);
+
         currentHealth -= damage;
 
+        Die();
+    }
+
+    protected virtual void Die()
+    {
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
     }
+
+    private int CheckTargetArmor(int damage)
+    {
+        if (armorPercentage > 0)
+        {
+            damage -= Mathf.RoundToInt(damage * armorPercentage);
+            if (damage < 0)
+            {
+                damage = 0;
+            }
+        }
+
+        return damage;
+    }
+
+    #region Buff stats
+
+    public void IncreaseHealth(int health)
+    {
+        currentHealth += health;
+
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
+
+    public void IncreaseArmor(float armorPercentage, float duration)
+    {
+        StartCoroutine(IncreaseArmorRoutine(armorPercentage, duration));
+    }
+
+    private IEnumerator IncreaseArmorRoutine(float armorPercentage, float duration)
+    {
+        this.armorPercentage = armorPercentage;
+
+        yield return new WaitForSeconds(duration);
+
+        this.armorPercentage = 0;
+    }
+
+    #endregion
 }

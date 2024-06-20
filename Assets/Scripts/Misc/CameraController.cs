@@ -37,4 +37,19 @@ public class CameraController : MonoBehaviour
     {
         return maxBound;
     }
+
+    public float GetPaddingLeft()
+    {
+        return paddingLeft;
+    }
+
+    public float GetPaddingRight()
+    {
+        return paddingRight;
+    }
+
+    public float GetPaddingTop()
+    {
+        return paddingTop;
+    }
 }

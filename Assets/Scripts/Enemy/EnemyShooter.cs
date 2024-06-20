@@ -8,11 +8,6 @@ public class EnemyShooter : Shooter
     [SerializeField] private float minFireRate;
     [SerializeField] private float maxFireRate;
 
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     protected override IEnumerator FireProjectileRoutine()
     {
         while (true)
