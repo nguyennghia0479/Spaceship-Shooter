@@ -28,14 +28,14 @@ public class EnemySpawner : MonoBehaviour
             {
                 currentWave = waveInfo;
 
+                yield return new WaitForSeconds(loopingTime);
+
                 for (int i = 0; i < currentWave.GetEnemyCount(); i++)
                 {
                     Instantiate(currentWave.GetEnemyByIndex(i), currentWave.GetStartingWaypoint().position, Quaternion.Euler(0, 0, -180), transform);
 
                     yield return new WaitForSeconds(currentWave.GetRandomTimeSpawnEnemy());
                 }
-
-                yield return new WaitForSeconds(loopingTime);
             }
         } while (isSpawn);
     }

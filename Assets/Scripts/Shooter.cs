@@ -9,11 +9,20 @@ public class Shooter : MonoBehaviour
     [SerializeField] private Transform guns;
     [SerializeField] private float fireRate;
 
+    private float defaultFireRate;
+    private GameObject defaultProjectile;
     private ProjectileHolder projectileHolder;
 
     protected virtual void Start()
     {
+        defaultFireRate = fireRate;
+        defaultProjectile = projectilePrefab;
         projectileHolder = FindObjectOfType<ProjectileHolder>();
+        if (projectileHolder == null)
+        {
+            Debug.LogWarning("Projectile Holder is null.");
+            return;
+        }
 
         StartCoroutine(FireProjectileRoutine());
     }
@@ -40,4 +49,35 @@ public class Shooter : MonoBehaviour
             rb.velocity = transform.up * moveSpeed;
         }
     }
+
+    #region Buff stats
+    public void IncreaseFireRate(float fireRatePercentage, float duration)
+    {
+        StartCoroutine(IncreaseFireRateRoutine(fireRatePercentage, duration));
+    }
+
+    private IEnumerator IncreaseFireRateRoutine(float fireRatePercentage, float duration)
+    {
+        fireRate -= fireRate * fireRatePercentage;
+
+        yield return new WaitForSeconds(duration);
+
+        fireRate = defaultFireRate;
+    }
+
+    public void UpgradeProjectile(GameObject projectileUpgradePrefab, float duration)
+    {
+        StartCoroutine(UpgradeProjectileRoutine(projectileUpgradePrefab, duration));
+    }
+
+    private IEnumerator UpgradeProjectileRoutine(GameObject projectileUpgradePrefab, float duration)
+    {
+        projectilePrefab = projectileUpgradePrefab;
+
+        yield return new WaitForSeconds(duration);
+
+        projectilePrefab = defaultProjectile;
+    }
+
+    #endregion
 }

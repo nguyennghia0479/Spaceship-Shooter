@@ -11,7 +11,7 @@ public class EnemyPathFinding : MonoBehaviour
 
     private void Start()
     {
-        enemySpawner = FindObjectOfType<EnemySpawner>();
+        enemySpawner = GetComponentInParent<EnemySpawner>();
         if (enemySpawner == null)
         {
             Debug.LogWarning("Enemy spawner is null. Destroy game object!");
