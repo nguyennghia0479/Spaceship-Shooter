@@ -12,6 +12,8 @@ public class ShieldEffectInfo : ItemEffectInfo
 
     public override void ExecuteItemEffect()
     {
+        base.ExecuteItemEffect();
+
         PlayerShip playerShip = PlayerManager.Instance.playerShip;
         Health health = playerShip.GetComponent<Health>();
 

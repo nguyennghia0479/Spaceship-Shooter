@@ -11,8 +11,9 @@ public class FireRateEffectInfo : ItemEffectInfo
 
     public override void ExecuteItemEffect()
     {
-        Shooter shooter = PlayerManager.Instance.playerShip.GetComponent<Shooter>();
+        base.ExecuteItemEffect();
 
+        Shooter shooter = PlayerManager.Instance.playerShip.GetComponent<Shooter>();
         shooter.IncreaseFireRate(fireRatePercentage, duration); 
     }
 }

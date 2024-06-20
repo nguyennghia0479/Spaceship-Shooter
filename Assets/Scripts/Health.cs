@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] protected int maxHealth;
+    [SerializeField] private ParticleSystem explosionParticlePrefab;
 
     protected int currentHealth;
     private float armorPercentage;
@@ -19,6 +20,7 @@ public class Health : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out DamageDealer damageDealer))
         {
             damageDealer.Hit();
+            HitEffect();
             TakeDamage(damageDealer.GetDamage());
         }
     }
@@ -52,6 +54,12 @@ public class Health : MonoBehaviour
         }
 
         return damage;
+    }
+
+    private void HitEffect()
+    {
+        ParticleSystem newExplosionParticle = Instantiate(explosionParticlePrefab, transform.position, Quaternion.identity);
+        Destroy(newExplosionParticle.gameObject, newExplosionParticle.main.duration + newExplosionParticle.main.startLifetime.constantMax);
     }
 
     #region Buff stats

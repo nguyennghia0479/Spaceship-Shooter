@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2814976366bd35f4c8c2e0ba3ec51d6e, type: 3}
+  m_Name: BronzeShieldEffect
+  m_EditorClassIdentifier: 
+  itemEffectDes: Add shield guard and decrease 25% damage of enemy
+  particleEffectPrefab: {fileID: 6795084574191159438, guid: 979e94f00bf160a408bb1b890b4d7d7e, type: 3}
+  shieldPrefab: {fileID: 3063039758332582998, guid: fef92cb6fb6462a4ea0cfbf1861423ae, type: 3}
+  armorPercentage: 0.25
+  duration: 10

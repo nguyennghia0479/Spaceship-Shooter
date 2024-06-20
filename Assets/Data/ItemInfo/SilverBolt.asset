@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003f31138a9a4004b948e4888b7373f6, type: 3}
+  m_Name: SilverBolt
+  m_EditorClassIdentifier: 
+  itemName: Silver bolt
+  icon: {fileID: 21300000, guid: a83c58863ec52e847b585ab294a39075, type: 3}
+  dropChance: 50
+  effects:
+  - {fileID: 11400000, guid: ba8b0b8bbbe62a34c88b7ee9f8e843c7, type: 2}
