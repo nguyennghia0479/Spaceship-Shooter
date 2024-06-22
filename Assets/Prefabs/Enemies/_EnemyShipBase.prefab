@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6567314502670651741}
   - component: {fileID: 832138415767418013}
   - component: {fileID: -1661454789491683880}
-  - component: {fileID: 8329369895272883009}
   - component: {fileID: 2834354358854095023}
   - component: {fileID: -7089248490886248856}
+  - component: {fileID: 6255735314423849415}
   m_Layer: 6
   m_Name: _EnemyShipBase
   m_TagString: Untagged
@@ -112,20 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b3dfab4ee6910428a1a694c7798adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8329369895272883009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 340011863026855995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08135201d906f674b8b65daa72975acb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  explosionParticlePrefab: {fileID: 6148040745768450078, guid: 58c95314bd6c7334698555e2bcfd0f47, type: 3}
 --- !u!114 &2834354358854095023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +143,20 @@ MonoBehaviour:
   fireRate: 0
   minFireRate: 0
   maxFireRate: 0
+--- !u!114 &6255735314423849415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340011863026855995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662394c8dc1b67349bde6d99664a371b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  explosionParticlePrefab: {fileID: 0}
 --- !u!1 &7731699600722461992
 GameObject:
   m_ObjectHideFlags: 0
