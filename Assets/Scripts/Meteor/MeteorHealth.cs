@@ -25,6 +25,8 @@ public class MeteorHealth : Health
             }
 
             ScoreManager.Instance.AddScorePoint(scorePoint);
+            SoundManager.Instance.PlayMeteorExplosionSound(transform.position);
+
             Destroy(gameObject);
         }
     }

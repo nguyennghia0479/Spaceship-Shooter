@@ -38,7 +38,8 @@ public class Health : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            Debug.Log(ScoreManager.Instance.GetScorePoint());
+            SoundManager.Instance.PlayShipExplosionSound(transform.position);
+
             Destroy(gameObject);
         }
     }

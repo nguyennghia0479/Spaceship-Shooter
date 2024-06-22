@@ -12,6 +12,7 @@ public class Shooter : MonoBehaviour
     private float defaultFireRate;
     private GameObject defaultProjectile;
     private ProjectileHolder projectileHolder;
+    private bool isShootLaserLarge;
 
     protected virtual void Start()
     {
@@ -34,6 +35,8 @@ public class Shooter : MonoBehaviour
             foreach (Transform gun in guns)
             {
                 SetupProjectile(gun.position);
+
+                PlayShootSound();
             }
 
             yield return new WaitForSeconds(fireRate);
@@ -47,6 +50,18 @@ public class Shooter : MonoBehaviour
         if (newProjectile.TryGetComponent(out Rigidbody2D rb))
         {
             rb.velocity = transform.up * moveSpeed;
+        }
+    }
+
+    private void PlayShootSound()
+    {
+        if (isShootLaserLarge)
+        {
+            SoundManager.Instance.PlayShootLaserLarge(transform.position);
+        }
+        else
+        {
+            SoundManager.Instance.PlayShootLaserSmall(transform.position);
         }
     }
 
@@ -73,10 +88,12 @@ public class Shooter : MonoBehaviour
     private IEnumerator UpgradeProjectileRoutine(GameObject projectileUpgradePrefab, float duration)
     {
         projectilePrefab = projectileUpgradePrefab;
+        isShootLaserLarge = true;
 
         yield return new WaitForSeconds(duration);
 
         projectilePrefab = defaultProjectile;
+        isShootLaserLarge = false;
     }
 
     #endregion

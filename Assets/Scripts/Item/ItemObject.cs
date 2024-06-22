@@ -28,6 +28,8 @@ public class ItemObject : MonoBehaviour
         if (collision.TryGetComponent(out PlayerShip _))
         {
             itemInfo.ExecuteItemEffect();
+            SoundManager.Instance.PlayExecuteItemSound();
+
             Destroy(gameObject);
         }
     }
