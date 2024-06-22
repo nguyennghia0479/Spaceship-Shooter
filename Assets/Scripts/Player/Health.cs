@@ -38,6 +38,7 @@ public class Health : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            Debug.Log(ScoreManager.Instance.GetScorePoint());
             Destroy(gameObject);
         }
     }

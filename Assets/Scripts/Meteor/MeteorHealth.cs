@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MeteorHealth : Health
 {
+    [SerializeField] private int scorePoint;
+
     private ItemDrop itemDrop;
 
     protected override void Start()
@@ -22,6 +24,7 @@ public class MeteorHealth : Health
                 itemDrop.GenerateItemDrop();
             }
 
+            ScoreManager.Instance.AddScorePoint(scorePoint);
             Destroy(gameObject);
         }
     }

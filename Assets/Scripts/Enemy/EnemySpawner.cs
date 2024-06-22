@@ -6,9 +6,15 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<WaveInfo> waveInfos;
     [SerializeField] private float loopingTime;
+    [Space]
+    [Header("Boss")]
+    [SerializeField] private List<GameObject> bossPrefabList;
+    [SerializeField] private int maxWaveToSpawnBoss = 2;
 
     private WaveInfo currentWave;
-    private readonly bool isSpawn = true;
+    private int waveCount = 0;
+    private bool isSpawnEnemy = true;
+    private bool isSpawnBoss = true;
 
     private void Start()
     {
@@ -20,9 +26,20 @@ public class EnemySpawner : MonoBehaviour
         return currentWave;
     }
 
+    public void SetupSpawnEnemy()
+    {
+        isSpawnEnemy = true;
+        StartCoroutine(SpawnEnemyRoutine());
+    }
+
+    public void BossDead()
+    {
+        isSpawnBoss = true;
+    }
+
     private IEnumerator SpawnEnemyRoutine()
     {
-        do
+        while (isSpawnEnemy)
         {
             foreach (WaveInfo waveInfo in waveInfos)
             {
@@ -36,7 +53,33 @@ public class EnemySpawner : MonoBehaviour
 
                     yield return new WaitForSeconds(currentWave.GetRandomTimeSpawnEnemy());
                 }
+
+                SetupEnemyBoss();
             }
-        } while (isSpawn);
+        }
+    }
+
+    private void SetupEnemyBoss()
+    {
+        if (!isSpawnBoss) return;
+
+        waveCount++;
+        if (bossPrefabList.Count > 0 && waveCount >= maxWaveToSpawnBoss)
+        {
+            waveCount = 0;
+            isSpawnEnemy = false;
+            isSpawnBoss = false;
+            SpawnEnemyBoss();
+        }
+    }
+
+    private void SpawnEnemyBoss()
+    {
+        GameObject bossPrefab = bossPrefabList[0];
+        GameObject newBoss = Instantiate(bossPrefab, transform);
+        newBoss.GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, -180);
+        newBoss.transform.rotation = Quaternion.Euler(0, 0, -180);
+
+        bossPrefabList.Remove(bossPrefab);
     }
 }
