@@ -39,6 +39,8 @@ public class EnemyHealth : Health
         {
             BossDie();
             ScoreManager.Instance.AddScorePoint(scorePoint);
+            SoundManager.Instance.PlayShipExplosionSound(transform.position);
+
             Destroy(gameObject);
         }
     }

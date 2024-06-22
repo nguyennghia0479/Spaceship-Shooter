@@ -39,7 +39,10 @@ public class EnemyShooter : Shooter
         while (true)
         {
             if (isFire)
+            {
                 SetupProjectile(transform.position);
+                SoundManager.Instance.PlayShootLaserSmall(transform.position);
+            }
 
             yield return new WaitForSeconds(Random.Range(minFireRate, maxFireRate));
         }

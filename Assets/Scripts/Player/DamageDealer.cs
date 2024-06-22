@@ -8,6 +8,8 @@ public class DamageDealer : MonoBehaviour
 
     public void Hit()
     {
+        if (GetComponent<EnemyBoss>() != null) return;
+
         Destroy(gameObject);
     }
 

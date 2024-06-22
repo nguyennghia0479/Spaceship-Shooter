@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 767f47e7138050944b78ed5c8a42c50e, type: 3}
+  m_Name: AudioClipInfo
+  m_EditorClassIdentifier: 
+  musicTracks:
+  - {fileID: 8300000, guid: f3a94005b332401469fdfcf79637baac, type: 3}
+  - {fileID: 8300000, guid: d4abff79915e83a449cd93a2e13f1b1f, type: 3}
+  - {fileID: 8300000, guid: 2a4f4083eb6bcfc4dbf303e74686006d, type: 3}
+  laserLarges:
+  - {fileID: 8300000, guid: 99312eab6d6e1e44d91d6f48ca683b1a, type: 3}
+  - {fileID: 8300000, guid: 42a8f4b03bc21554399d807df7017ff1, type: 3}
+  - {fileID: 8300000, guid: edd29985c8df48c43b1bbf0fa97372c1, type: 3}
+  - {fileID: 8300000, guid: 1272a15367acc6d45ae0750d587a4ff4, type: 3}
+  - {fileID: 8300000, guid: e8cbb8d16c2941643b01cf3b1af93868, type: 3}
+  laserSmalls:
+  - {fileID: 8300000, guid: 296a41413600d154498a3873646b2af5, type: 3}
+  - {fileID: 8300000, guid: 707b30cdf9c5caf478acb2fa51471ad7, type: 3}
+  - {fileID: 8300000, guid: b2096b9c62d0be643a13d1926bbde61a, type: 3}
+  - {fileID: 8300000, guid: d783cf31b8e06f74ba93bb078d645ed4, type: 3}
+  - {fileID: 8300000, guid: 0743db4c61f597443a52406ac04a8874, type: 3}
+  shipExplosions:
+  - {fileID: 8300000, guid: 0582bba2f4cebe24bb19eb408dcd8490, type: 3}
+  - {fileID: 8300000, guid: c958dc72aab8d2a43bad34431bf3e4e9, type: 3}
+  - {fileID: 8300000, guid: 726b667d90ca4524f82b4f44af79d016, type: 3}
+  - {fileID: 8300000, guid: 895a393acde10454fae058111a1c444a, type: 3}
+  meteorExplosion:
+  - {fileID: 8300000, guid: 8c88a99a3bfd7bf4c8a6081c31081ecc, type: 3}
+  executeItems:
+  - {fileID: 8300000, guid: 8ce423cc6cab71546957d29e0e7687b0, type: 3}
