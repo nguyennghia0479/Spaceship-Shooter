@@ -6,25 +6,14 @@ using UnityEngine.UI;
 
 public class SettingUI : MonoBehaviour
 {
-    [SerializeField] private AudioMixer audioMixer;
-    [SerializeField] private float multiplier;
-    [SerializeField] private Slider musicSlider;
-    [SerializeField] private Slider soundSlider;
     [SerializeField] private Button resumeBtn;
     [SerializeField] private Button mainMenuBtn;
+    [SerializeField] private Button closeBtn;
 
     private PlayerController playerController;
 
     private void Awake()
     {
-        musicSlider.onValueChanged.AddListener(delegate {
-            audioMixer.SetFloat("bgm", Mathf.Log10(musicSlider.value) * multiplier);
-        });
-
-        soundSlider.onValueChanged.AddListener(delegate {
-            audioMixer.SetFloat("sfx", Mathf.Log10(soundSlider.value) * multiplier);
-        });
-
         resumeBtn.onClick.AddListener(() =>
         {
             playerController.ToogleSetting();
@@ -33,6 +22,11 @@ public class SettingUI : MonoBehaviour
         mainMenuBtn.onClick.AddListener(() =>
         {
             Debug.Log("Return main menu");
+        });
+
+        closeBtn.onClick.AddListener(() =>
+        {
+            Hide();
         });
     }
 
@@ -73,15 +67,13 @@ public class SettingUI : MonoBehaviour
         }
     }
 
-    private void Show()
+    public void Show()
     {
         gameObject.SetActive(true);
-        Time.timeScale = 0f;
     }
 
-    private void Hide()
+    public void Hide()
     {
         gameObject.SetActive(false);
-        Time.timeScale = 1f;
     }
 }

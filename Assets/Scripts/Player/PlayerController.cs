@@ -44,6 +44,15 @@ public class PlayerController : MonoBehaviour
     public void ToogleSetting()
     {
         isOpenSetting = !isOpenSetting;
+        if (isOpenSetting)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+
         OnToogleSetting?.Invoke(isOpenSetting);
     }
 }
