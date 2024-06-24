@@ -10,7 +10,7 @@ public class EnemyHealth : Health
     private EnemyBoss enemyBoss;
     private EnemySpawner enemySpawner;
     private ItemDrop itemDrop;
-    private bool isSpawnEnemy;
+    /*private bool isSpawnEnemy;*/
 
     protected override void Start()
     {

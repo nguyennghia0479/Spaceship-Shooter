@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +5,8 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance { get; private set; }
 
-    [SerializeField] private AudioClipInfo audioClipInfo;
-    [Range(0f, 1f)]
-    [SerializeField] private float audioVolume;
-
-    private AudioSource audioSource;
-    private int index = 0;
+    [SerializeField] private List<AudioSource> musicSources;
+    private int currentTrackIndex = 0;
 
     private void Awake()
     {
@@ -21,35 +16,40 @@ public class MusicManager : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
-
-        audioSource = GetComponent<AudioSource>();
-        audioSource.loop = false;
-        audioSource.volume = audioVolume;
     }
 
     private void Start()
     {
-        audioSource.clip = audioClipInfo.musicTracks[index];
-        audioSource.Play();
+        PlayMusicTrack(currentTrackIndex);
     }
 
     private void Update()
     {
-        if (!audioSource.isPlaying)
+        if (!musicSources[currentTrackIndex].isPlaying)
         {
-            audioSource.clip = GetNextMusicTrack();
-            audioSource.Play();
+            PlayNextMusic();
         }
     }
 
-    private AudioClip GetNextMusicTrack()
+    private void PlayNextMusic()
     {
-        index++;
-        if (index >= audioClipInfo.musicTracks.Length)
+        currentTrackIndex++;
+        if (currentTrackIndex >= musicSources.Count)
+            currentTrackIndex = 0;
+
+        PlayMusicTrack(currentTrackIndex);
+    }
+
+    private void PlayMusicTrack(int index)
+    {
+        if (musicSources.Count <= 0) return;
+
+        foreach(var audioSource in musicSources)
         {
-            index++;
+            audioSource.Stop();
         }
 
-        return audioClipInfo.musicTracks[index];
+        musicSources[index].Play();
+
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,14 @@ public class Health : MonoBehaviour
     [SerializeField] protected int maxHealth;
     [SerializeField] private ParticleSystem explosionParticlePrefab;
 
+    public event Action<float> OnHealthChange;
     protected int currentHealth;
     private float armorPercentage;
 
     protected virtual void Start()
     {
         currentHealth = maxHealth;
+        OnHealthChange?.Invoke(currentHealth);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -30,6 +33,7 @@ public class Health : MonoBehaviour
         damage = CheckTargetArmor(damage);
 
         currentHealth -= damage;
+        OnHealthChange?.Invoke(currentHealth);
 
         Die();
     }
@@ -64,6 +68,16 @@ public class Health : MonoBehaviour
         Destroy(newExplosionParticle.gameObject, newExplosionParticle.main.duration + newExplosionParticle.main.startLifetime.constantMax);
     }
 
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     #region Buff stats
 
     public void IncreaseHealth(int health)
@@ -74,6 +88,8 @@ public class Health : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+
+        OnHealthChange?.Invoke(currentHealth);
     }
 
     public void IncreaseArmor(float armorPercentage, float duration)
