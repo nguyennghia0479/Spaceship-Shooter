@@ -8,14 +8,14 @@ public class DialogBoxUI : MonoBehaviour
     [SerializeField] private Button cancelBtn;
     [SerializeField] private Button okBtn;
 
-    private UI ui;
+    private BackgroundUI backgroundUI;
 
     private void Awake()
     {
-        ui = FindObjectOfType<UI>();
-        if (ui == null)
+        backgroundUI = FindAnyObjectByType<BackgroundUI>();
+        if (backgroundUI == null)
         {
-            Debug.Log("SettingUI is null");
+            Debug.Log("BackgroundUI is null.");
             return;
         }
 
@@ -38,12 +38,12 @@ public class DialogBoxUI : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
-        ui.SetBackground(150f, false);
+        backgroundUI.SetBackground(150, false);
     }
 
     public void Hide()
     {
         gameObject.SetActive(false);
-        ui.SetBackground(0, true);
+        backgroundUI.SetBackground(0, true);
     }
 }
