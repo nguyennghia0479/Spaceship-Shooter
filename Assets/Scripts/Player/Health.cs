@@ -43,6 +43,7 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             SoundManager.Instance.PlayShipExplosionSound(transform.position);
+            LevelManager.Instance.LoadGameOverScene();
 
             Destroy(gameObject);
         }
