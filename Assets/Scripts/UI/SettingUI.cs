@@ -4,38 +4,27 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class SettingUI : MonoBehaviour
+public class SettingUI : UI
 {
     [SerializeField] private Button resumeBtn;
     [SerializeField] private Button mainMenuBtn;
     [SerializeField] private Button closeBtn;
 
     private PlayerController playerController;
+    private LevelManager levelManager;
 
     private void Awake()
     {
-        if (resumeBtn != null)
-        {
-            resumeBtn.onClick.AddListener(() =>
-            {
-                playerController.ToogleSetting();
-            });
-        }
+        levelManager = LevelManager.Instance;
 
-        if (mainMenuBtn != null)
+        if (levelManager.IsGameScene())
         {
-            mainMenuBtn.onClick.AddListener(() =>
-            {
-                Debug.Log("Return main menu");
-            });
+            backgroundImage = background.GetComponent<Image>();
+            InitButtonInGameScene();
         }
-
-        if (closeBtn != null)
+        else if (levelManager.IsMainMenuScene())
         {
-            closeBtn.onClick.AddListener(() =>
-            {
-                Hide();
-            });
+            InitButtonInMainMenuScene();
         }
     }
 
@@ -76,6 +65,34 @@ public class SettingUI : MonoBehaviour
         }
     }
 
+    private void InitButtonInGameScene()
+    {
+        DialogBoxUI dialogBoxUI = FindObjectOfType<DialogBoxUI>();
+        if (dialogBoxUI == null)
+        {
+            Debug.LogWarning("DialogBoxUI is null.");
+            return;
+        }
+
+        resumeBtn.onClick.AddListener(() =>
+        {
+            playerController.ToogleSetting();
+        });
+
+        mainMenuBtn.onClick.AddListener(() =>
+        {
+            dialogBoxUI.Show();
+        });
+    }
+
+    private void InitButtonInMainMenuScene()
+    {
+        closeBtn.onClick.AddListener(() =>
+        {
+            Hide();
+        });
+    }
+
     public void Show()
     {
         gameObject.SetActive(true);
@@ -84,5 +101,10 @@ public class SettingUI : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    public override void SetBackground(float alpha, bool isInteractable)
+    {
+        base.SetBackground(alpha, isInteractable);
     }
 }

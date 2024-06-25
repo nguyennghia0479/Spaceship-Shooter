@@ -2,23 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singleton<SoundManager>
 {
-    public static SoundManager Instance { get; private set; }
-
     [SerializeField] private AudioSource[] laserLarges;
     [SerializeField] private AudioSource[] laserSmalls;
     [SerializeField] private AudioSource[] shipExplosions;
     [SerializeField] private AudioSource[] meteorExplosion;
     [SerializeField] private AudioSource[] executedItems;
-
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-    }
 
     public void PlayExecuteItemSound()
     {

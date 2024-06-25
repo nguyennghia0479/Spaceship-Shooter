@@ -2,20 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : Singleton<ScoreManager>
 {
-    public static ScoreManager Instance { get; private set; }
-
     private int scorePoint;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-        {
-            Destroy(gameObject);
-        }
+        base.Awake();
 
         DontDestroyOnLoad(gameObject);
     }

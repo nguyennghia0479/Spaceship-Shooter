@@ -1,19 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicManager : MonoBehaviour
+public class MusicManager : Singleton<MusicManager>
 {
-    public static MusicManager Instance { get; private set; }
-
     [SerializeField] private List<AudioSource> musicSources;
     private int currentTrackIndex = 0;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
+        base.Awake();
 
         DontDestroyOnLoad(gameObject);
     }
@@ -44,7 +39,7 @@ public class MusicManager : MonoBehaviour
     {
         if (musicSources.Count <= 0) return;
 
-        foreach(var audioSource in musicSources)
+        foreach (var audioSource in musicSources)
         {
             audioSource.Stop();
         }

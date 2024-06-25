@@ -19,7 +19,7 @@ public class MainMenuUI : MonoBehaviour
 
         startBtn.onClick.AddListener(() =>
         {
-            Debug.Log("Start game");
+            LevelManager.Instance.LoadGameScene();
         });
 
         customBtn.onClick.AddListener(() =>
@@ -37,6 +37,8 @@ public class MainMenuUI : MonoBehaviour
             Debug.Log("Quit");
             Application.Quit();
         });
+
+        Time.timeScale = 1f;
     }
 
     private void InitComponent()
