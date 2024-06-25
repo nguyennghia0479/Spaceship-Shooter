@@ -14,20 +14,29 @@ public class SettingUI : MonoBehaviour
 
     private void Awake()
     {
-        resumeBtn.onClick.AddListener(() =>
+        if (resumeBtn != null)
         {
-            playerController.ToogleSetting();
-        });
+            resumeBtn.onClick.AddListener(() =>
+            {
+                playerController.ToogleSetting();
+            });
+        }
 
-        mainMenuBtn.onClick.AddListener(() =>
+        if (mainMenuBtn != null)
         {
-            Debug.Log("Return main menu");
-        });
+            mainMenuBtn.onClick.AddListener(() =>
+            {
+                Debug.Log("Return main menu");
+            });
+        }
 
-        closeBtn.onClick.AddListener(() =>
+        if (closeBtn != null)
         {
-            Hide();
-        });
+            closeBtn.onClick.AddListener(() =>
+            {
+                Hide();
+            });
+        }
     }
 
     private void OnEnable()

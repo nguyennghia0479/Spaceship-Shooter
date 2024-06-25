@@ -5367,6 +5367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resumeBtn: {fileID: 7109875305727256910}
   mainMenuBtn: {fileID: 4044334777314599920}
+  closeBtn: {fileID: 0}
 --- !u!224 &790118311508235365
 RectTransform:
   m_ObjectHideFlags: 0
