@@ -3,11 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI : MonoBehaviour
+public class BackgroundUI : MonoBehaviour
 {
-    [SerializeField] protected GameObject background;
+    private Image backgroundImage;
 
-    protected Image backgroundImage;
+    protected virtual void Awake()
+    {
+        backgroundImage = GetComponent<Image>();
+        if (backgroundImage == null)
+        {
+            Debug.Log("BackgroundImage is null.");
+            return;
+        }
+
+        SetBackground(0, true);
+    }
 
     public virtual void SetBackground(float alpha, bool isInteractable)
     {

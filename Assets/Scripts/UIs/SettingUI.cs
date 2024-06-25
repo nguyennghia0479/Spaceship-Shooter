@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class SettingUI : UI
+public class SettingUI : MonoBehaviour
 {
     [SerializeField] private Button resumeBtn;
     [SerializeField] private Button mainMenuBtn;
@@ -12,6 +12,7 @@ public class SettingUI : UI
 
     private PlayerController playerController;
     private LevelManager levelManager;
+    private BackgroundUI backgroundUI;
 
     private void Awake()
     {
@@ -19,11 +20,17 @@ public class SettingUI : UI
 
         if (levelManager.IsGameScene())
         {
-            backgroundImage = background.GetComponent<Image>();
             InitButtonInGameScene();
         }
         else if (levelManager.IsMainMenuScene())
         {
+            backgroundUI = FindAnyObjectByType<BackgroundUI>();
+            if (backgroundUI == null)
+            {
+                Debug.Log("BackgroundUI is null.");
+                return;
+            }
+
             InitButtonInMainMenuScene();
         }
     }
@@ -96,15 +103,20 @@ public class SettingUI : UI
     public void Show()
     {
         gameObject.SetActive(true);
+
+        if (levelManager.IsMainMenuScene())
+        {
+            backgroundUI.SetBackground(150, false);
+        }
     }
 
     public void Hide()
     {
         gameObject.SetActive(false);
-    }
 
-    public override void SetBackground(float alpha, bool isInteractable)
-    {
-        base.SetBackground(alpha, isInteractable);
+        if (levelManager.IsMainMenuScene())
+        {
+            backgroundUI.SetBackground(0, true);
+        }
     }
 }
