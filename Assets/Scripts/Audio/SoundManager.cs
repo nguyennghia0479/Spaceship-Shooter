@@ -6,9 +6,11 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
 
-    [SerializeField] private AudioClipInfo audioClipInfo;
-    [Range(0f, 1f)]
-    [SerializeField] private float audioVolume;
+    [SerializeField] private AudioSource[] laserLarges;
+    [SerializeField] private AudioSource[] laserSmalls;
+    [SerializeField] private AudioSource[] shipExplosions;
+    [SerializeField] private AudioSource[] meteorExplosion;
+    [SerializeField] private AudioSource[] executedItems;
 
     private void Awake()
     {
@@ -20,37 +22,40 @@ public class SoundManager : MonoBehaviour
 
     public void PlayExecuteItemSound()
     {
-        PlaySound(audioClipInfo.executeItems, Camera.main.transform.position, audioVolume);
+        PlaySound(executedItems, Camera.main.transform.position);
     }
 
     public void PlayMeteorExplosionSound(Vector3 position)
     {
-        PlaySound(audioClipInfo.meteorExplosion, position, audioVolume);
+        PlaySound(meteorExplosion, position);
     }
 
     public void PlayShipExplosionSound(Vector3 position)
     {
-        PlaySound(audioClipInfo.shipExplosions, position, audioVolume);
+        PlaySound(shipExplosions, position);
     }
 
     public void PlayShootLaserLarge(Vector3 position)
     {
-        PlaySound(audioClipInfo.laserLarges, position, audioVolume);
+        PlaySound(laserLarges, position);
     }
 
     public void PlayShootLaserSmall(Vector3 position)
     {
-        PlaySound(audioClipInfo.laserSmalls, position, audioVolume);
+        PlaySound(laserSmalls, position);
     }
 
-    private void PlaySound(AudioClip[] audioClips, Vector3 position, float volume)
+    private void PlaySound(AudioSource[] audioSources, Vector3 position)
     {
-        if (audioClips == null || audioClips.Length == 0)
+        if (audioSources == null || audioSources.Length == 0)
         {
-            Debug.LogWarning("No audio clips provided to play.");
+            Debug.LogWarning("No audio sources provided to play.");
             return;
         }
 
-        AudioSource.PlayClipAtPoint(audioClips[Random.Range(0, audioClips.Length)], position, volume);
+        AudioSource audioSource = audioSources[Random.Range(0, audioSources.Length)];
+        audioSource.Stop();
+        audioSource.transform.position = position;
+        audioSource.Play();
     }
 }
