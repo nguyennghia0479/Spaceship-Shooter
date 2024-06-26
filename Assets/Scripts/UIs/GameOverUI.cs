@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
@@ -9,6 +10,7 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Button retryBtn;
     [SerializeField] private Button mainMenuBtn;
+    [SerializeField] private LocalizedString localizedStringScore;
 
     private void Awake()
     {
@@ -30,8 +32,20 @@ public class GameOverUI : MonoBehaviour
         });
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        /*scoreText.text = ScoreManager.Instance.GetScorePoint().ToString();*/
+        int score = ScoreManager.Instance.GetScorePoint();
+        localizedStringScore.Arguments = new object[] { score };
+        localizedStringScore.StringChanged += UpdateText;
+    }
+
+    private void OnDisable()
+    {
+        localizedStringScore.StringChanged -= UpdateText;
+    }
+
+    private void UpdateText(string value)
+    {
+        scoreText.text = value;
     }
 }
