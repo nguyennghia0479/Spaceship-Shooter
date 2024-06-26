@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: GameScene Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: GameScene
+  m_TableCollectionNameGuidString: ff2aa422461336a49a3312f299c0b5a2
+  m_Entries:
+  - m_Id: 8540168192
+    m_Key: GameUI.SettingUI.Header
+    m_Metadata:
+      m_Items: []
+  - m_Id: 233258393600
+    m_Key: GameUI.SettingUI.LangSetting.EngOpt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 473529098240
+    m_Key: GameUI.SettingUI.LangSetting.VieOpt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 553355091968
+    m_Key: GameUI.SettingUI.ResumeBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 667205279744
+    m_Key: GameUI.SettingUI.MainMenuBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1391452528640
+    m_Key: GameUI.DIalogBoxUI.Header
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549196107776
+    m_Key: GameUI.DIalogBoxUI.Text
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8349336749388333092
+  references:
+    version: 2
+    RefIds:
+    - rid: 8349336749388333092
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1719393239439

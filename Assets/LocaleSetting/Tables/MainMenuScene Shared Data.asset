@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: MainMenuScene Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: MainMenuScene
+  m_TableCollectionNameGuidString: c8985af16a588e044b1d48ea5dc7bcfc
+  m_Entries:
+  - m_Id: 59115085824
+    m_Key: MainMenuUI.StartBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 498388738048
+    m_Key: MainMenuUI.CustomBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 916246274048
+    m_Key: MainMenuUI.SettingBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1047448297472
+    m_Key: MainMenuUI.QuitBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1222967336960
+    m_Key: MainMenuUI.CustomUI.Header
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1373660291072
+    m_Key: MainMenuUI.CustomUI.Stats.Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1503885041664
+    m_Key: MainMenuUI.CustomUI.Stats.Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1594649780224
+    m_Key: MainMenuUI.CustomUI.Stats.Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1761448861696
+    m_Key: MainMenuUI.SettingUI.Header
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1940671471616
+    m_Key: MainMenuUI.SettingUI.LangSetting.EngOpt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2137166225408
+    m_Key: MainMenuUI.SettingUI.LangSetting.VieOpt
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8349336749388333087
+  references:
+    version: 2
+    RefIds:
+    - rid: 8349336749388333087
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1719391568977

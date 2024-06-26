@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Shared
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d4261a5b21bd0fd4ba086ac5a130847a
+  m_SerializeEntries:
+  - m_GUID: c8985af16a588e044b1d48ea5dc7bcfc
+    m_Address: Assets/LocalSetting/Tables/MainMenuScene Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff2aa422461336a49a3312f299c0b5a2
+    m_Address: Assets/LocalSetting/Tables/GameScene Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75469ccbb51ff474993af8b3000a5473
+    m_Address: Assets/LocalSetting/Tables/GameOverScene Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: a68ce4e7b188bfb4cb2ccc1b8fd85e20, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 56589e57fc80a2a4c9822f7016ab02ea, type: 2}
+    - {fileID: 11400000, guid: 7f73704cc7846b64f87d96a177fed3a4, type: 2}

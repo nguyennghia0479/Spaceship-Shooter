@@ -32,13 +32,16 @@ public class PlayerController : MonoBehaviour
     public Vector2 GetMovementNormalized()
     {
         Vector2 moveDir = inputSystem.Player.Move.ReadValue<Vector2>();
-        
+
         return moveDir.normalized;
     }
 
     private void Setting_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        ToogleSetting();
+        if (LevelManager.Instance.IsGameScene())
+        {
+            ToogleSetting();
+        }
     }
 
     public void ToogleSetting()

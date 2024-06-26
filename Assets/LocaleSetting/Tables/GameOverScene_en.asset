@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: GameOverScene_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 75469ccbb51ff474993af8b3000a5473, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 8349336758958686209
+  m_TableData:
+  - m_Id: 11153219584
+    m_Localized: GAME OVER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459339767808
+    m_Localized: GET BETTER NEXT TIME!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702508736512
+    m_Localized: YOUR SCORE\n {0}
+    m_Metadata:
+      m_Items:
+      - rid: 8349336758958686209
+  - m_Id: 895450914816
+    m_Localized: RETRY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 975243354112
+    m_Localized: MAIN MENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1140154998784
+    m_Localized: CONFIRM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1254349119488
+    m_Localized: ARE YOU SURE?
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 8349336758958686209
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00a0c890a3000000
