@@ -10,15 +10,12 @@ public class InGameUI : MonoBehaviour
     [SerializeField] Image[] healthDots;
 
     private Health health;
-    private float maxHealthDot;
 
     private void Start()
     {
         if (PlayerManager.Instance.playerShip.TryGetComponent(out Health health))
         {
             this.health = health;
-            maxHealthDot = health.GetMaxHealth() / healthDots.Length;
-
             UpdateHealth(health.GetCurrentHealth());
 
             health.OnHealthChange += UpdateHealth;
@@ -40,6 +37,8 @@ public class InGameUI : MonoBehaviour
 
     private void UpdateHealth(float currentHealth)
     {
+        float maxHealthDot = health.GetMaxHealth() / healthDots.Length;    
+
         for (int i = 0; i < healthDots.Length; i++)
         {
             float healthDot = Mathf.Min(currentHealth, maxHealthDot);
