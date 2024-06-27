@@ -9,11 +9,17 @@ public class Health : MonoBehaviour
     [SerializeField] private ParticleSystem explosionParticlePrefab;
 
     public event Action<float> OnHealthChange;
+
     protected int currentHealth;
     private float armorPercentage;
 
     protected virtual void Start()
     {
+        if (TryGetComponent(out PlayerShip _) && TryGetComponent(out PlayerStats playerStats))
+        {
+            maxHealth *= playerStats.GetHealth();
+        }
+       
         currentHealth = maxHealth;
         OnHealthChange?.Invoke(currentHealth);
     }

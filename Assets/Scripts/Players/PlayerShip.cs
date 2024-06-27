@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerShip : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
-
     private ParallaxBackground parallaxBackground;
     private PlayerController playerController;
     private CameraController cameraController;
+    private PlayerStats playerStats;
+    private float moveSpeed;
     private float defaultMoveSpeed;
 
     private void Start()
@@ -34,6 +34,14 @@ public class PlayerShip : MonoBehaviour
             return;
         }
 
+        playerStats = GetComponent<PlayerStats>();
+        if (playerStats == null)
+        {
+            Debug.LogWarning("Player Stats is null.");
+            return;
+        }
+
+        moveSpeed = playerStats.GetSpeed();
         defaultMoveSpeed = moveSpeed;
     }
 

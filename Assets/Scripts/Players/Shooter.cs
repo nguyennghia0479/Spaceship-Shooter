@@ -9,9 +9,10 @@ public class Shooter : MonoBehaviour
     [SerializeField] private Transform guns;
     [SerializeField] private float fireRate;
 
-    private float defaultFireRate;
     private GameObject defaultProjectile;
     private ProjectileHolder projectileHolder;
+    private PlayerStats playerStats;
+    private float defaultFireRate;
     private bool isShootLaserLarge;
 
     protected virtual void Start()
@@ -23,6 +24,11 @@ public class Shooter : MonoBehaviour
         {
             Debug.LogWarning("Projectile Holder is null.");
             return;
+        }
+
+        if (TryGetComponent(out PlayerShip _) && TryGetComponent(out PlayerStats playerStats))
+        {
+            this.playerStats = playerStats;
         }
 
         StartCoroutine(FireProjectileRoutine());
@@ -40,7 +46,6 @@ public class Shooter : MonoBehaviour
             }
 
             yield return new WaitForSeconds(fireRate);
-
         }
     }
 
@@ -50,6 +55,12 @@ public class Shooter : MonoBehaviour
         if (newProjectile.TryGetComponent(out Rigidbody2D rb))
         {
             rb.velocity = transform.up * moveSpeed;
+        }
+
+        if (newProjectile.TryGetComponent(out DamageDealer damageDealer) && playerStats != null)
+        {
+            int damage = damageDealer.GetDamage() * playerStats.GetDamage();
+            damageDealer.SetDamage(damage);
         }
     }
 
