@@ -12,16 +12,24 @@ public class Health : MonoBehaviour
 
     protected int currentHealth;
     private float armorPercentage;
+    private CameraShake cameraShake;
 
     protected virtual void Start()
     {
         if (TryGetComponent(out PlayerShip _) && TryGetComponent(out PlayerStats playerStats))
         {
-            maxHealth *= playerStats.GetHealth();
+            maxHealth = playerStats.GetHealth() * 100;
         }
-       
+
         currentHealth = maxHealth;
-        OnHealthChange?.Invoke(currentHealth);
+        InvokeOnHealthChange();
+
+        cameraShake = Camera.main.GetComponent<CameraShake>();
+        if (cameraShake == null)
+        {
+            Debug.LogWarning("Camera Shake in null.");
+            return;
+        }
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -29,7 +37,7 @@ public class Health : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out DamageDealer damageDealer))
         {
             damageDealer.Hit();
-            HitEffect();
+            HitEffect(collision.transform.position);
             TakeDamage(damageDealer.GetDamage());
         }
     }
@@ -39,7 +47,12 @@ public class Health : MonoBehaviour
         damage = CheckTargetArmor(damage);
 
         currentHealth -= damage;
-        OnHealthChange?.Invoke(currentHealth);
+        InvokeOnHealthChange();
+
+        if (cameraShake != null)
+        {
+            cameraShake.PlayCameraShake();
+        }
 
         Die();
     }
@@ -53,6 +66,11 @@ public class Health : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+
+    protected virtual void InvokeOnHealthChange()
+    {
+        OnHealthChange?.Invoke(currentHealth);
     }
 
     private int CheckTargetArmor(int damage)
@@ -69,9 +87,9 @@ public class Health : MonoBehaviour
         return damage;
     }
 
-    private void HitEffect()
+    private void HitEffect(Vector3 position)
     {
-        ParticleSystem newExplosionParticle = Instantiate(explosionParticlePrefab, transform.position, Quaternion.identity);
+        ParticleSystem newExplosionParticle = Instantiate(explosionParticlePrefab, position, Quaternion.identity);
         Destroy(newExplosionParticle.gameObject, newExplosionParticle.main.duration + newExplosionParticle.main.startLifetime.constantMax);
     }
 

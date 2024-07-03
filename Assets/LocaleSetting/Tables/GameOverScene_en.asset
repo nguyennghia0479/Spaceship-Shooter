@@ -48,6 +48,16 @@ MonoBehaviour:
     m_Localized: ARE YOU SURE?
     m_Metadata:
       m_Items: []
+  - m_Id: 2108122957651968
+    m_Localized: YOU WIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2108257611587584
+    m_Localized: 'CONGRATULATION!
+
+      YOU HAVE ACHIEVED MAXIMUM POINTS'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

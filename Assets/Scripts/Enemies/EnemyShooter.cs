@@ -40,8 +40,7 @@ public class EnemyShooter : Shooter
         {
             if (isFire)
             {
-                SetupProjectile(transform.position);
-                SoundManager.Instance.PlayShootLaserSmall(transform.position);
+                EnemyFire();
             }
 
             yield return new WaitForSeconds(Random.Range(minFireRate, maxFireRate));
@@ -51,5 +50,27 @@ public class EnemyShooter : Shooter
     protected override void SetupProjectile(Vector3 firePosition)
     {
         base.SetupProjectile(firePosition);
+    }
+
+    protected override void PlayShootSound()
+    {
+        SoundManager.Instance.PlayShootLaserSmall(transform.position);
+    }
+
+    private void EnemyFire()
+    {
+        if (guns != null)
+        {
+            foreach (Transform gun in guns)
+            {
+                SetupProjectile(gun.position);
+                PlayShootSound();
+            }
+        }
+        else
+        {
+            SetupProjectile(transform.position);
+            PlayShootSound();
+        }
     }
 }

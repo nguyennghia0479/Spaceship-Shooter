@@ -25,10 +25,16 @@ public class LocaleSelector : MonoBehaviour
     private bool isActive;
     private string labelEngLang;
     private string labelVieLang;
-    private int currentLocaleId = engLocaleId;
+    private int currentLocaleId;
 
     private const int engLocaleId = 0;
     private const int vieLocaleId = 1;
+    public const string PLAYER_PREF_LANG = "LangId";
+
+    private void Awake()
+    {
+        currentLocaleId = PlayerPrefs.GetInt(PLAYER_PREF_LANG, engLocaleId);
+    }
 
     private void OnEnable()
     {
@@ -83,6 +89,9 @@ public class LocaleSelector : MonoBehaviour
 
         currentLocaleId = ((OptionData)dropdown.options[index]).value;
         StartCoroutine(SetLocaleRoutine(currentLocaleId));
+
+        PlayerPrefs.SetInt(PLAYER_PREF_LANG, currentLocaleId);
+        PlayerPrefs.Save();
     }
 
     private IEnumerator SetLocaleRoutine(int localeId)

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -11,11 +9,20 @@ public class VolumeUI : MonoBehaviour
     [SerializeField] private string parameter;
     [SerializeField] private float multiplier = 30;
 
-    private void Awake()
+    private void Start()
     {
-        slider.onValueChanged.AddListener(delegate
-        {
-            audioMixer.SetFloat(parameter, Mathf.Log10(slider.value) * multiplier);
-        });
+        slider.value = PlayerPrefs.GetFloat(parameter, 0.5f);
+
+        SetVolume(slider.value);
+
+        slider.onValueChanged.AddListener(SetVolume);
+    }
+
+    private void SetVolume(float sliderValue)
+    {
+        audioMixer.SetFloat(parameter, Mathf.Log10(sliderValue) * multiplier);
+
+        PlayerPrefs.SetFloat(parameter, sliderValue);
+        PlayerPrefs.Save();
     }
 }

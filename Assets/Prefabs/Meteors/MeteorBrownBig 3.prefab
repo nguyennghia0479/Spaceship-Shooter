@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: scorePoint
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -8871050359575657713, guid: 556d70274d45c4c4f8672c3bbc43ab63, type: 3}
+      propertyPath: explosionParticlePrefab
+      value: 
+      objectReference: {fileID: 1793547418405982048, guid: 65496261746ba2b45be754c7e555beef, type: 3}
     - target: {fileID: -3231588637424681952, guid: 556d70274d45c4c4f8672c3bbc43ab63, type: 3}
       propertyPath: itemObjectPrefab
       value: 
@@ -142,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6719519609339922389, guid: 556d70274d45c4c4f8672c3bbc43ab63, type: 3}
       propertyPath: damage
-      value: 75
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

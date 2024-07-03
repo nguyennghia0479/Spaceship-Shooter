@@ -10,6 +10,14 @@ public class InGameUI : MonoBehaviour
     [SerializeField] Image[] healthDots;
 
     private Health health;
+    private Animator animator;
+
+    private const string IS_FLASHING = "IsFlashing";
+
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
 
     private void Start()
     {
@@ -19,6 +27,11 @@ public class InGameUI : MonoBehaviour
             UpdateHealth(health.GetCurrentHealth());
 
             health.OnHealthChange += UpdateHealth;
+
+            if (animator != null)
+            {
+                animator.SetBool(IS_FLASHING, false);
+            }
         }
     }
 
@@ -37,6 +50,7 @@ public class InGameUI : MonoBehaviour
 
     private void UpdateHealth(float currentHealth)
     {
+        HealthFlashing(currentHealth);
         float maxHealthDot = health.GetMaxHealth() / healthDots.Length;    
 
         for (int i = 0; i < healthDots.Length; i++)
@@ -48,4 +62,12 @@ public class InGameUI : MonoBehaviour
         }
     }
 
+    private void HealthFlashing(float currentHealth)
+    {
+        if (animator == null) return;
+
+        float healthFlashingShowAmount = .3f;
+        bool isFlashing = currentHealth / health.GetMaxHealth() < healthFlashingShowAmount;
+        animator.SetBool(IS_FLASHING, isFlashing);
+    }
 }

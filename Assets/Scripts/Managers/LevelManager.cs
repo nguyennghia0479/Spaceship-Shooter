@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public enum Level
 {
-    MainMenuScene, GameScene, GameOverScene
+    MainMenuScene, GameScene, GameOverScene, GameWinScene
 }
 
 public class LevelManager : Singleton<LevelManager>
@@ -28,6 +28,8 @@ public class LevelManager : Singleton<LevelManager>
     public void LoadGameScene()
     {
         ScoreManager.Instance.ResetScorePoint();
+        BackgroundManager.Instance.UpdateBackground();
+
         level = Level.GameScene;
         LoadScene(Level.GameScene.ToString());
     }
@@ -36,6 +38,12 @@ public class LevelManager : Singleton<LevelManager>
     {
         level = Level.GameOverScene;
         LoadScene(Level.GameOverScene.ToString(), 1.5f);
+    }
+
+    public void LoadGameWinScene()
+    {
+        level = Level.GameWinScene;
+        LoadScene(Level.GameWinScene.ToString(), 1.5f);
     }
 
     public bool IsMainMenuScene()
@@ -67,7 +75,6 @@ public class LevelManager : Singleton<LevelManager>
         while (!asyncOperation.isDone)
         {
             float progress = Mathf.Clamp01(asyncOperation.progress / .9f);
-            Debug.Log("Progress load: " + (progress * 100) + "%");
 
             yield return null;
         }

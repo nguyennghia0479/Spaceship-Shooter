@@ -6,7 +6,7 @@ public class Shooter : MonoBehaviour
 {
     [SerializeField] protected GameObject projectilePrefab;
     [SerializeField] protected float moveSpeed;
-    [SerializeField] private Transform guns;
+    [SerializeField] protected Transform guns;
     [SerializeField] private float fireRate;
 
     private GameObject defaultProjectile;
@@ -14,6 +14,7 @@ public class Shooter : MonoBehaviour
     private PlayerStats playerStats;
     private float defaultFireRate;
     private bool isShootLaserLarge;
+    private int damageAdd = 0;
 
     protected virtual void Start()
     {
@@ -59,12 +60,12 @@ public class Shooter : MonoBehaviour
 
         if (newProjectile.TryGetComponent(out DamageDealer damageDealer) && playerStats != null)
         {
-            int damage = damageDealer.GetDamage() * playerStats.GetDamage();
+            int damage = playerStats.GetDamage() + damageAdd;
             damageDealer.SetDamage(damage);
         }
     }
 
-    private void PlayShootSound()
+    protected virtual void PlayShootSound()
     {
         if (isShootLaserLarge)
         {
@@ -100,11 +101,13 @@ public class Shooter : MonoBehaviour
     {
         projectilePrefab = projectileUpgradePrefab;
         isShootLaserLarge = true;
+        damageAdd = projectileUpgradePrefab.GetComponent<DamageDealer>().GetDamage();
 
         yield return new WaitForSeconds(duration);
 
         projectilePrefab = defaultProjectile;
         isShootLaserLarge = false;
+        damageAdd = 0;
     }
 
     #endregion
