@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f49cfdec81fb73429a045ecec9379e6, type: 3}
+  m_Name: ListEnemyOrangeShipInfo
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 265609829811648643, guid: 60df9ae08073ae148981659f653be9bc, type: 3}
+  - {fileID: 265609829811648643, guid: 9ac759ea968391849a38f663538c298d, type: 3}
+  - {fileID: 265609829811648643, guid: 70571c39529fe9e4ca0a53902f3c66b4, type: 3}
+  - {fileID: 265609829811648643, guid: 6cc517578a883a2448d05ab573c8fba3, type: 3}
+  - {fileID: 265609829811648643, guid: 13bf3dcdb31fe854e82ef1e5f0883bbf, type: 3}

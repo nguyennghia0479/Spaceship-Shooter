@@ -5,13 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Item/Item Effect/Health Effect Info")]
 public class HealEffectInfo : ItemEffectInfo
 {
-    [SerializeField] private int healthPoint;
+    [Range(0, 1)]
+    [SerializeField] private float healthPercentage;
 
     public override void ExecuteItemEffect()
     {
         base.ExecuteItemEffect();
 
         Health health = PlayerManager.Instance.playerShip.GetComponent<Health>();
-        health.IncreaseHealth(healthPoint);
+        int healthAdd = Mathf.RoundToInt(health.GetMaxHealth() * healthPercentage);
+        health.IncreaseHealth(healthAdd);
     }
 }

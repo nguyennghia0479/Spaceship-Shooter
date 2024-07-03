@@ -10,7 +10,6 @@ public class EnemyHealth : Health
     private EnemyBoss enemyBoss;
     private EnemySpawner enemySpawner;
     private ItemDrop itemDrop;
-    /*private bool isSpawnEnemy;*/
 
     protected override void Start()
     {
@@ -29,7 +28,7 @@ public class EnemyHealth : Health
         }
 
         currentHealth -= damage;
-        /*SpawnEnemy();*/
+        InvokeOnHealthChange();
         Die();
     }
 
@@ -55,18 +54,6 @@ public class EnemyHealth : Health
             }
 
             enemySpawner.BossDead();
-            enemySpawner.SetupSpawnEnemy();
         }
     }
-
-    /*private void SpawnEnemy()
-    {
-        if (enemyBoss == null || isSpawnEnemy) return;
-
-        if (currentHealth < maxHealth * 0.75)
-        {
-            isSpawnEnemy = true;
-            enemySpawner.SetupSpawnEnemy();
-        }
-    }*/
 }

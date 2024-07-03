@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f49cfdec81fb73429a045ecec9379e6, type: 3}
+  m_Name: ListEnemyGreenShipInfo
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 265609829811648643, guid: 38898a0b01174864ca087cb40c584be4, type: 3}
+  - {fileID: 265609829811648643, guid: 5de412ac4b41b074ca5375c37d388945, type: 3}
+  - {fileID: 265609829811648643, guid: 03b149783850c024aa7b20b4a3f690fb, type: 3}
+  - {fileID: 265609829811648643, guid: f0079c0a00b7d9443aa57c36298532fb, type: 3}
+  - {fileID: 265609829811648643, guid: 2e3f514bb47ddf14ca5769da8b86ffd4, type: 3}

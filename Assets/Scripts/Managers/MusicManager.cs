@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,12 +17,15 @@ public class MusicManager : Singleton<MusicManager>
     private void Start()
     {
         PlayMusicTrack(currentTrackIndex);
+        StartCoroutine(PlayMusicTrackRoutine());
     }
 
-    private void Update()
+    private IEnumerator PlayMusicTrackRoutine()
     {
-        if (!musicSources[currentTrackIndex].isPlaying)
+        while (true)
         {
+            yield return new WaitForSeconds(musicSources[currentTrackIndex].clip.length);
+
             PlayNextMusic();
         }
     }

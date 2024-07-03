@@ -4,21 +4,53 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [Header("Enemy Ship")]
+    [SerializeField] private List<ListPrefabInfo> enemyList;
     [SerializeField] private List<WaveInfo> waveInfos;
-    [SerializeField] private float loopingTime;
-    [Space]
-    [Header("Boss")]
-    [SerializeField] private List<GameObject> bossPrefabList;
-    [SerializeField] private int maxWaveToSpawnBoss = 2;
+    [SerializeField] private float minNextWaveTime;
+    [SerializeField] private float maxNextWaveTime;
 
+    [Header("Enemy Boss")]
+    [SerializeField] private ListPrefabInfo bossPrefabList;
+    [SerializeField] private float addNextWaveTime = 20;
+
+    [Header("Cooldown")]
+    [SerializeField] private float spawnBossCooldown = 60;
+    [SerializeField] private float spawnEnemyCooldown = 120;
+
+    private ListPrefabInfo currentEnemyWave;
     private WaveInfo currentWave;
-    private int waveCount = 0;
     private bool isSpawnEnemy = true;
-    private bool isSpawnBoss = true;
+    private bool isSpawnBoss;
+    private float spawnBossTimer;
+    private float spawnEnemyTimer;
+    private float defaultMinNextWaveTime;
+    private float defaultMaxNextWaveTime;
 
     private void Start()
     {
+        spawnBossTimer = spawnBossCooldown;
+        spawnEnemyTimer = 0;
+        defaultMinNextWaveTime = minNextWaveTime;
+        defaultMaxNextWaveTime = maxNextWaveTime;
+
         StartCoroutine(SpawnEnemyRoutine());
+    }
+
+    private void Update()
+    {
+        spawnBossTimer -= Time.deltaTime;
+        spawnEnemyTimer -= Time.deltaTime;
+
+        if (spawnBossTimer < 0)
+        {
+            SetupEnemyBoss();
+        }
+
+        if (spawnEnemyTimer < 0)
+        {
+            SetupSpawnEnemy();
+        }
     }
 
     public WaveInfo GetCurrentWaveInfo()
@@ -26,60 +58,74 @@ public class EnemySpawner : MonoBehaviour
         return currentWave;
     }
 
-    public void SetupSpawnEnemy()
-    {
-        isSpawnEnemy = true;
-        StartCoroutine(SpawnEnemyRoutine());
-    }
-
     public void BossDead()
     {
-        isSpawnBoss = true;
+        minNextWaveTime = defaultMinNextWaveTime;
+        maxNextWaveTime = defaultMaxNextWaveTime;
+        spawnBossTimer = spawnBossCooldown;
+        isSpawnBoss = false;
+        SetupSpawnEnemy();
     }
 
     private IEnumerator SpawnEnemyRoutine()
     {
         while (isSpawnEnemy)
         {
-            foreach (WaveInfo waveInfo in waveInfos)
+            currentEnemyWave = enemyList[Random.Range(0, enemyList.Count)];
+            currentWave = waveInfos[Random.Range(0, waveInfos.Count)];
+
+            yield return new WaitForSeconds(GetRandomNextWaveTime());
+
+            for (int i = 0; i < currentEnemyWave.GetCount(); i++)
             {
-                currentWave = waveInfo;
+                GameObject newEnemy = Instantiate(currentEnemyWave.GetByIndex(i), currentWave.GetStartingWaypoint().position, Quaternion.identity, transform);
+                RotateEnemy(newEnemy);
 
-                yield return new WaitForSeconds(loopingTime);
-
-                for (int i = 0; i < currentWave.GetEnemyCount(); i++)
-                {
-                    Instantiate(currentWave.GetEnemyByIndex(i), currentWave.GetStartingWaypoint().position, Quaternion.Euler(0, 0, -180), transform);
-
-                    yield return new WaitForSeconds(currentWave.GetRandomTimeSpawnEnemy());
-                }
-
-                SetupEnemyBoss();
+                yield return new WaitForSeconds(currentWave.GetRandomTimeSpawnEnemy());
             }
         }
     }
 
+    private float GetRandomNextWaveTime()
+    {
+        return Random.Range(minNextWaveTime, maxNextWaveTime);
+    }
+
+    private void SetupSpawnEnemy()
+    {
+        if (isSpawnEnemy) return;
+
+        StopCoroutine(SpawnEnemyRoutine());
+        isSpawnEnemy = true;
+        spawnEnemyTimer = 0;
+        StartCoroutine(SpawnEnemyRoutine());
+    }
+
     private void SetupEnemyBoss()
     {
-        if (!isSpawnBoss) return;
+        if (isSpawnBoss) return;
 
-        waveCount++;
-        if (bossPrefabList.Count > 0 && waveCount >= maxWaveToSpawnBoss)
+        if (bossPrefabList.GetCount() > 0)
         {
-            waveCount = 0;
+            spawnEnemyTimer = spawnEnemyCooldown;
             isSpawnEnemy = false;
-            isSpawnBoss = false;
+            isSpawnBoss = true;
+            minNextWaveTime += addNextWaveTime;
+            maxNextWaveTime += addNextWaveTime;
             SpawnEnemyBoss();
         }
     }
 
     private void SpawnEnemyBoss()
     {
-        GameObject bossPrefab = bossPrefabList[0];
+        GameObject bossPrefab = bossPrefabList.GetByIndex(Random.Range(0, bossPrefabList.GetCount()));
         GameObject newBoss = Instantiate(bossPrefab, transform);
-        newBoss.GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, -180);
-        newBoss.transform.rotation = Quaternion.Euler(0, 0, -180);
+        RotateEnemy(newBoss);
+    }
 
-        bossPrefabList.Remove(bossPrefab);
+    private void RotateEnemy(GameObject gameObject)
+    {
+        gameObject.GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, -180);
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, -180);
     }
 }

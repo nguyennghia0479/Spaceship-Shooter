@@ -15,6 +15,13 @@ public class MeteorHealth : Health
         itemDrop = GetComponent<ItemDrop>();
     }
 
+    protected override void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        Die();
+    }
+
     protected override void Die()
     {
         if (currentHealth <= 0)

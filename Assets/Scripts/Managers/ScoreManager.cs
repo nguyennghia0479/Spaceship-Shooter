@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScoreManager : Singleton<ScoreManager>
 {
     private int scorePoint;
+    private const int maxScorePoint = 999999999;
 
     protected override void Awake()
     {
@@ -21,6 +22,11 @@ public class ScoreManager : Singleton<ScoreManager>
     public void AddScorePoint(int scorePoint)
     {
         this.scorePoint += scorePoint;
+
+        if (this.scorePoint > maxScorePoint)
+        {
+            LevelManager.Instance.LoadGameWinScene();
+        }
     }
 
     public void ResetScorePoint()

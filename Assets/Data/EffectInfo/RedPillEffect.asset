@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemEffectDes: Restore 25 health point for player ship
   particleEffectPrefab: {fileID: 6795084574191159438, guid: c4c45fa070c45a140bf6891bd56ec142, type: 3}
-  healthPoint: 25
+  healthPercentage: 0.25

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793f33ff3379923458be1a631d305f81, type: 3}
+  m_Name: Wave 13
+  m_EditorClassIdentifier: 
+  path: {fileID: 3152647794089666383, guid: 0c3adb1e97efea840a1aa9a30088f482, type: 3}
+  enemies:
+  - {fileID: 979022045907228558, guid: 34376bc65012c8d49bc8b508b5203bc7, type: 3}
+  - {fileID: 979022045907228558, guid: 74eca96aa0549d441816dbc873d1e050, type: 3}
+  - {fileID: 979022045907228558, guid: ad3e7e406474894428c280d8a8c49f35, type: 3}
+  - {fileID: 979022045907228558, guid: b1f8bd5ed6589754eb5666cea0c65b42, type: 3}
+  - {fileID: 979022045907228558, guid: 3116d1a4f6b9aa548b2c798acd147545, type: 3}
+  minTime: 1
+  maxTime: 2
+  moveSpeed: 2

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SettingUI : MonoBehaviour
 {
+    [SerializeField] private Slider vibration;
     [SerializeField] private Button resumeBtn;
     [SerializeField] private Button mainMenuBtn;
     [SerializeField] private Button closeBtn;
@@ -13,10 +14,17 @@ public class SettingUI : MonoBehaviour
     private PlayerController playerController;
     private LevelManager levelManager;
     private BackgroundUI backgroundUI;
+    private CameraShake cameraShake;
 
     private void Awake()
     {
         levelManager = LevelManager.Instance;
+        cameraShake = Camera.main.GetComponent<CameraShake>();
+        if (cameraShake == null)
+        {
+            Debug.LogWarning("Camera Shake is null");
+            return;
+        }
 
         if (levelManager.IsGameScene())
         {
@@ -33,6 +41,8 @@ public class SettingUI : MonoBehaviour
 
             InitButtonInMainMenuScene();
         }
+
+        InitVibrationSlider();
     }
 
     private void OnEnable()
@@ -97,6 +107,22 @@ public class SettingUI : MonoBehaviour
         closeBtn.onClick.AddListener(() =>
         {
             Hide();
+        });
+    }
+
+    private void InitVibrationSlider()
+    {
+        vibration.minValue = 0;
+        vibration.maxValue = .5f;
+
+        if (cameraShake != null)
+        {
+            vibration.value = PlayerPrefs.GetFloat(cameraShake.GetShakeMagnitude(), .25f);
+        }
+
+        vibration.onValueChanged.AddListener(delegate
+        {
+            cameraShake.ChanageShakeMagnitude(vibration.value);
         });
     }
 

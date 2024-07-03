@@ -43,6 +43,14 @@ MonoBehaviour:
     m_Key: GameOverUI.DialogBoxUI.Text
     m_Metadata:
       m_Items: []
+  - m_Id: 2108122957651968
+    m_Key: GameWinUI.Header
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2108257611587584
+    m_Key: GameWinUI.SubHeader
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -6,7 +6,6 @@ using UnityEngine;
 public class WaveInfo : ScriptableObject
 {
     [SerializeField] private Transform path;
-    [SerializeField] private List<Transform> enemies;
     [SerializeField] private float minTime;
     [SerializeField] private float maxTime;
     [SerializeField] private float moveSpeed;
@@ -31,16 +30,6 @@ public class WaveInfo : ScriptableObject
     public float GetRandomTimeSpawnEnemy()
     {
         return Random.Range(minTime, maxTime);
-    }
-
-    public Transform GetEnemyByIndex(int index)
-    {
-        return enemies[index];
-    }
-
-    public int GetEnemyCount()
-    {
-        return enemies.Count;
     }
 
     public float GetMoveSpeed()

@@ -48,6 +48,15 @@ MonoBehaviour:
     m_Localized: "B\u1EA0N C\xD3 CH\u1EAEC?"
     m_Metadata:
       m_Items: []
+  - m_Id: 2108122957651968
+    m_Localized: "CHI\u1EBEN TH\u1EAENG"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2108257611587584
+    m_Localized: "\rCH\xDAC M\u1EEANG!\nB\u1EA0N \u0110\xC3 \u0110\u1EA0T \u0110\u01AF\u1EE2C
+      \u0110I\u1EC2M T\u1ED0I \u0110A"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

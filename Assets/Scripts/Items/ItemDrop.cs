@@ -8,6 +8,15 @@ public class ItemDrop : MonoBehaviour
     [SerializeField] private List<ItemInfo> items;
 
     private bool isGenerate = true;
+    private bool isBoss;
+
+    private void Start()
+    {
+        if (TryGetComponent(out EnemyBoss _))
+        {
+            isBoss = true;
+        }
+    }
 
     public void GenerateItemDrop()
     {
@@ -19,7 +28,8 @@ public class ItemDrop : MonoBehaviour
             }
 
             ItemInfo item = items[Random.Range(0, items.Count)];
-            items.Remove(item);
+            if (!isBoss)
+                items.Remove(item);
 
             if (Random.Range(0f, 100f) < item.GetDropChance())
             {
