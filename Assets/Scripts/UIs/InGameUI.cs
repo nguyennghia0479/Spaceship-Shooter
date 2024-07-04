@@ -8,9 +8,11 @@ public class InGameUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] Image[] healthDots;
+    [SerializeField] private float increaseRate = 100;
 
     private Health health;
     private Animator animator;
+    private float currentScorePoint;
 
     private const string IS_FLASHING = "IsFlashing";
 
@@ -37,7 +39,17 @@ public class InGameUI : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = ScoreManager.Instance.GetScorePoint().ToString("000000000");
+        int scorePoint = ScoreManager.Instance.GetScorePoint();
+        if (currentScorePoint < scorePoint)
+        {
+            currentScorePoint += Time.deltaTime * increaseRate;
+        }
+        else
+        {
+            currentScorePoint = scorePoint;
+        }
+
+        scoreText.text = currentScorePoint.ToString("000000000");
     }
 
     private void OnDestroy()
