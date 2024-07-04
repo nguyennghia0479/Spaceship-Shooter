@@ -62,6 +62,22 @@ MonoBehaviour:
     m_Localized: VIETNAMESE
     m_Metadata:
       m_Items: []
+  - m_Id: 2802183075045376
+    m_Localized: CREDIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2802358594084864
+    m_Localized: ASSETS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2802702317297664
+    m_Localized: DEVELOPER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2802948271284224
+    m_Localized: NGHIA NGUYEN TRONG
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

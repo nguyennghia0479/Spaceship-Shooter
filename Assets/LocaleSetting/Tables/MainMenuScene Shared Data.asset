@@ -59,6 +59,22 @@ MonoBehaviour:
     m_Key: MainMenuUI.SettingUI.LangSetting.VieOpt
     m_Metadata:
       m_Items: []
+  - m_Id: 2802183075045376
+    m_Key: MainMenuUI.CreditUI.Header
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2802358594084864
+    m_Key: MaiMenuUI.CreditUI.Assets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2802702317297664
+    m_Key: MainMenuUI.CreditUI.Dev
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2802948271284224
+    m_Key: MainMenuUI.CreditUI.DevName
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

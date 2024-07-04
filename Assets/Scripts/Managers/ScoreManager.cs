@@ -22,8 +22,8 @@ public class ScoreManager : Singleton<ScoreManager>
     public void AddScorePoint(int scorePoint)
     {
         this.scorePoint += scorePoint;
-
-        if (this.scorePoint > maxScorePoint)
+ 
+        if (this.scorePoint >= maxScorePoint)
         {
             LevelManager.Instance.LoadGameWinScene();
         }

@@ -1024,7 +1024,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d21626bb7b8160d4dac116618c9b4b88, type: 2}
   - {fileID: 11400000, guid: 0eb272ae18ea6494a916a2f169e127f2, type: 2}
   minNextWaveTime: 2
-  maxNextWaveTime: 4
+  maxNextWaveTime: 3
   bossPrefabList: {fileID: 11400000, guid: 963d4961b6466cb45bbd77d22be24ed8, type: 2}
   addNextWaveTime: 15
   spawnBossCooldown: 60

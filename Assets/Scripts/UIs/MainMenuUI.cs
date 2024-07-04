@@ -9,9 +9,11 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Button customBtn;
     [SerializeField] private Button settingBtn;
     [SerializeField] private Button quitBtn;
+    [SerializeField] private Button creditBtn;
 
     private SettingUI settingUI;
     private CustomUI customUI;
+    private CreditUI creditUI;
 
     private void Awake()
     {
@@ -38,6 +40,11 @@ public class MainMenuUI : MonoBehaviour
             Application.Quit();
         });
 
+        creditBtn.onClick.AddListener(() =>
+        {
+            creditUI.Show();
+        });
+
         Time.timeScale = 1f;
     }
 
@@ -54,6 +61,13 @@ public class MainMenuUI : MonoBehaviour
         if (customUI == null)
         {
             Debug.Log("CustomUI is null.");
+            return;
+        }
+
+        creditUI = FindObjectOfType<CreditUI>();
+        if (creditUI == null)
+        {
+            Debug.Log("CreditUi is null.");
             return;
         }
     }
